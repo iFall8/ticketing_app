@@ -44,7 +44,17 @@ class EventController extends Controller
         // Handle file upload
         if ($request->hasFile('gambar')) {
             $imageName = time().'.'.$request->gambar->extension();
-            $request->gambar->move(public_path('images/events'), $imageName);
+            
+            // Store in public/images/events using file_put_contents for better Windows compatibility
+            $uploadPath = public_path('images/events');
+            if (!is_dir($uploadPath)) {
+                mkdir($uploadPath, 0755, true);
+            }
+            
+            $file = $request->file('gambar');
+            $destinationPath = $uploadPath . DIRECTORY_SEPARATOR . $imageName;
+            file_put_contents($destinationPath, file_get_contents($file->getRealPath()));
+            
             $validatedData['gambar'] = $imageName;
         }
 
@@ -97,7 +107,17 @@ class EventController extends Controller
             // Handle file upload
             if ($request->hasFile('gambar')) {
                 $imageName = time().'.'.$request->gambar->extension();
-                $request->gambar->move(public_path('images/events'), $imageName);
+                
+                // Store in public/images/events using file_put_contents for better Windows compatibility
+                $uploadPath = public_path('images/events');
+                if (!is_dir($uploadPath)) {
+                    mkdir($uploadPath, 0755, true);
+                }
+                
+                $file = $request->file('gambar');
+                $destinationPath = $uploadPath . DIRECTORY_SEPARATOR . $imageName;
+                file_put_contents($destinationPath, file_get_contents($file->getRealPath()));
+                
                 $validatedData['gambar'] = $imageName;
             }
 
