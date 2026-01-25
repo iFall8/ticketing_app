@@ -31,10 +31,13 @@ Route::middleware('auth')->group(function () {
     Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('categories', CategoryController::class);
+
         // Event Management
         Route::resource('events', EventController::class);
+
         // Tiket Management 
         Route::resource('tickets', TiketController::class);
+        
         // Histories
         Route::get('/histories', [HistoriesController::class, 'index'])->name('histories.index');
         Route::get('/histories/{id}', [HistoriesController::class, 'show'])->name('histories.show');
