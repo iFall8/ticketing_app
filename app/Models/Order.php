@@ -17,6 +17,7 @@ class Order extends Model
     protected $fillable = [
         'user_id',
         'event_id',
+        'tipe_pembayaran_id',
         'order_date',
         'total_harga',
     ];
@@ -24,6 +25,11 @@ class Order extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function tipePembayaran()
+    {
+        return $this->belongsTo(TipePembayaran::class);
     }
 
     public function tikets()

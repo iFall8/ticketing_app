@@ -128,7 +128,7 @@
                         @forelse ($tickets as $index => $ticket)
                             <tr>
                                 <th>{{ $index + 1 }}</th>
-                                <td>{{ $ticket->tipe }}</td>
+                                <td>{{ $ticket->tipeTiket->nama ?? 'N/A' }}</td>
                                 <td>{{ $ticket->harga }}</td>
                                 <td>{{ $ticket->stok }}</td>
                                 <td>

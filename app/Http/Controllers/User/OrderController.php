@@ -24,7 +24,7 @@ class OrderController extends Controller
   // show a specific order
   public function show(Order $order)
   {
-    $order->load('detailOrders.tiket', 'event');
+    $order->load('detailOrders.tiket.tipeTiket', 'event', 'tipePembayaran');
     return view('orders.show', compact('order'));
   }
 
@@ -34,6 +34,7 @@ class OrderController extends Controller
 
     $data = $request->validate([
       'event_id' => 'required|exists:events,id',
+      'tipe_pembayaran_id' => 'required|exists:tipe_pembayarans,id',
       'items' => 'required|array|min:1',
       'items.*.tiket_id' => 'required|integer|exists:tikets,id',
       'items.*.jumlah' => 'required|integer|min:1',
@@ -57,6 +58,7 @@ class OrderController extends Controller
         $order = Order::create([
           'user_id' => $user->id,
           'event_id' => $data['event_id'],
+          'tipe_pembayaran_id' => $data['tipe_pembayaran_id'],
           'order_date' => Carbon::now(),
           'total_harga' => $total,
         ]);

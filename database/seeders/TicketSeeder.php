@@ -13,25 +13,25 @@ class TicketSeeder extends Seeder
         $tickets = [
             [
                 'event_id' => 1,
-                'tipe' => 'premium',
+                'tipe' => '2',
                 'harga' => 1500000,
                 'stok' => 100,
             ],
             [
                 'event_id' => 1,
-                'tipe' => 'Reguler',
+                'tipe' => '1',
                 'harga' => 500000,
                 'stok' => 500,
             ],
             [
                 'event_id' => 2,
-                'tipe' => 'Premium',
+                'tipe' => '2',
                 'harga' => 200000,
                 'stok' => 300,
             ],
             [
                 'event_id' => 3,
-                'tipe' => 'premium',
+                'tipe' => '2',
                 'harga' => 300000,
                 'stok' => 200,
             ],

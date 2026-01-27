@@ -71,7 +71,7 @@ class EventController extends Controller
      */
     public function show(string $id)
     {
-        $event = Event::findOrFail($id);
+        $event = Event::with('tikets.tipeTiket')->findOrFail($id);
         $categories = Kategori::all();
         $tickets = $event->tikets;
         $tipeTikets = TipeTiket::all();

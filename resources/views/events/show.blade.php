@@ -47,7 +47,7 @@
               @forelse($event->tikets as $tiket)
               <div class="card card-side shadow-sm p-4 items-center">
                 <div class="flex-1">
-                  <h4 class="font-bold">{{ $tiket->tipe }}</h4>
+                  <h4 class="font-bold">{{ $tiket->tipeTiket->nama ?? 'N/A' }}</h4>
                   <p class="text-sm text-gray-500">Stok: <span id="stock-{{ $tiket->id }}">{{ $tiket->stok }}</span></p>
                   <p class="text-sm mt-2">{{ $tiket->keterangan ?? '' }}</p>
                 </div>
@@ -117,6 +117,20 @@
           </div>
 
           <div class="divider"></div>
+
+          <!-- Payment Type Selection -->
+          <div class="form-control w-full mb-4">
+            <label class="label">
+              <span class="label-text font-semibold">Metode Pembayaran</span>
+            </label>
+            <select id="paymentTypeSelect" class="select select-bordered w-full" required>
+              <option value="" disabled selected>Pilih metode pembayaran</option>
+              @foreach($tipePembayarans as $tipe)
+                <option value="{{ $tipe->id }}">{{ $tipe->nama }}</option>
+              @endforeach
+            </select>
+          </div>
+
           <div class="flex justify-between items-center">
             <span class="font-bold">Total</span>
             <span class="font-bold text-lg" id="modalTotal">Rp 0</span>
@@ -145,7 +159,7 @@
             id: {{ $tiket->id }},
             price: {{ $tiket->harga ?? 0 }},
             stock: {{ $tiket->stok }},
-            tipe: "{{ e($tiket->tipe) }}"
+            tipe: "{{ e($tiket->tipeTiket->nama ?? 'N/A') }}"
           },
         @endforeach
       };
@@ -277,6 +291,17 @@
         return;
       }
 
+      // Get selected payment type
+      const paymentTypeSelect = document.getElementById('paymentTypeSelect');
+      const tipePembayaranId = paymentTypeSelect.value;
+
+      if (!tipePembayaranId) {
+        alert('Silakan pilih metode pembayaran');
+        btn.removeAttribute('disabled');
+        btn.textContent = 'Konfirmasi';
+        return;
+      }
+
       try {
         const res = await fetch("{{ route('orders.store') }}", {
           method: 'POST',
@@ -285,7 +310,7 @@
             'Accept': 'application/json',
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
           },
-          body: JSON.stringify({ event_id: {{ $event->id }}, items })
+          body: JSON.stringify({ event_id: {{ $event->id }}, tipe_pembayaran_id: tipePembayaranId, items })
         });
 
         const data = await res.json();

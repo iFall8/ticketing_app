@@ -12,4 +12,9 @@ class TipePembayaran extends Model
     protected $fillable = [
         'nama',
     ];
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

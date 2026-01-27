@@ -23,7 +23,7 @@
             @foreach($order->detailOrders as $d)
               <div class="flex justify-between items-center">
                 <div>
-                  <div class="font-bold">{{ $d->tiket->tipe }}</div>
+                  <div class="font-bold">{{ $d->tiket->tipeTiket->nama ?? 'N/A' }}</div>
                   <div class="text-sm text-gray-500">Qty: {{ $d->jumlah }}</div>
                 </div>
                 <div class="text-right">
@@ -31,6 +31,14 @@
                 </div>
               </div>
             @endforeach
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- Payment Type -->
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-sm text-gray-600">Metode Pembayaran</span>
+            <span class="font-semibold">{{ $order->tipePembayaran->nama ?? '-' }}</span>
           </div>
 
           <div class="divider"></div>

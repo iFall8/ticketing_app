@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\TipeTiket;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,6 +16,7 @@ class TipeTiketSeeder extends Seeder
         $tipeTikets = [
             ['nama' => 'Reguler'],
             ['nama' => 'Premium'],
+            ['nama' => 'VIP'],
         ];
 
         foreach ($tipeTikets as $tipeTiket) {

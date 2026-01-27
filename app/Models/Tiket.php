@@ -31,4 +31,9 @@ class Tiket extends Model
         return $this->belongsToMany(Order::class, 'detail_orders')
             ->withPivot('jumlah', 'subtotal_harga');
     }
+
+    public function tipeTiket()
+    {
+        return $this->belongsTo(TipeTiket::class, 'tipe');
+    }
 }
