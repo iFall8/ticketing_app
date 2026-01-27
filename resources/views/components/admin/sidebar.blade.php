@@ -51,6 +51,17 @@
                 </a>
             </li>
             
+            <!-- Tipe Pembayaran item -->
+            <li class="{{ request()->routeIs('admin.tipe-pembayarans.*') ? 'bg-gray-200 rounded-lg' : '' }}">
+                <a href="{{ route('admin.tipe-pembayarans.index') }}" class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Tipe Pembayaran">
+                    <!-- icon Tipe Pembayaran (Credit Card) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-9 4h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2" />
+                    </svg>
+                    <span class="is-drawer-close:hidden">Manajemen Tipe Pembayaran</span>
+                </a>
+            </li>
+            
             <!-- History item -->
             <li class="{{ request()->routeIs('admin.histories.*') ? 'bg-gray-200 rounded-lg' : '' }}">
                 <a href="{{ route('admin.histories.index') }}" class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="History">

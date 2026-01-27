@@ -19,13 +19,13 @@ class TicketSeeder extends Seeder
             ],
             [
                 'event_id' => 1,
-                'tipe' => 'reguler',
+                'tipe' => 'Reguler',
                 'harga' => 500000,
                 'stok' => 500,
             ],
             [
                 'event_id' => 2,
-                'tipe' => 'premium',
+                'tipe' => 'Premium',
                 'harga' => 200000,
                 'stok' => 300,
             ],

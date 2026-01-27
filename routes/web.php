@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\HistoriesController;
 use App\Http\Controllers\Admin\TipeTiketController;
+use App\Http\Controllers\Admin\TipePembayaranController;
 use App\Http\Controllers\Admin\TiketController;
 use App\Http\Controllers\User\OrderController;
 use App\Http\Controllers\ProfileController;
@@ -45,6 +46,9 @@ Route::middleware('auth')->group(function () {
 
         // Tipe Tiket Management
         Route::resource('tipe-tikets', TipeTiketController::class);
+
+        // Tipe Pembayaran Management
+        Route::resource('tipe-pembayarans', TipePembayaranController::class);
     });
 });
 
