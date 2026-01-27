@@ -5,6 +5,7 @@ use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\HistoriesController;
+use App\Http\Controllers\Admin\TipeTiketController;
 use App\Http\Controllers\Admin\TiketController;
 use App\Http\Controllers\User\OrderController;
 use App\Http\Controllers\ProfileController;
@@ -41,6 +42,9 @@ Route::middleware('auth')->group(function () {
         // Histories
         Route::get('/histories', [HistoriesController::class, 'index'])->name('histories.index');
         Route::get('/histories/{id}', [HistoriesController::class, 'show'])->name('histories.show');
+
+        // Tipe Tiket Management
+        Route::resource('tipe-tikets', TipeTiketController::class);
     });
 });
 

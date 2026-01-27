@@ -16,6 +16,12 @@
             </div>
             <div class="card bg-base-100 card-sm shadow-xs p-2">
                 <div class="card-body">
+                    <h2 class="card-title text-md">Tipe Tiket</h2>
+                    <p class="font-bold text-4xl">{{ $totalTipeTikets ?? 0 }}</p>
+                </div>
+            </div>
+            <div class="card bg-base-100 card-sm shadow-xs p-2">
+                <div class="card-body">
                     <h2 class="card-title text-md">Total Transaksi</h2>
                     <p class="font-bold text-4xl">{{ $totalOrders ?? 0 }}</p>
                 </div>
